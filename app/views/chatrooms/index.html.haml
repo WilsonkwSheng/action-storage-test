@@ -1,0 +1,5 @@
+%h1 Chatrooms Page
+= link_to 'Create Chatroom', new_chatroom_path
+%div
+  - @chatrooms.each do |chatroom|
+    = link_to "Chatroom: #{chatroom.topic}", chatroom_path(chatroom)

@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis'
 gem 'devise'
 gem 'haml'
+gem 'simple_form'
+gem 'bootstrap'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

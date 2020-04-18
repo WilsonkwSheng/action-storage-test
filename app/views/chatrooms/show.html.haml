@@ -1,0 +1,9 @@
+.container
+  %h1= @chatroom.topic
+  .panel.panel-default
+    - if @chatroom.messages.any?
+      #messages.panel-body
+        = render partial: 'messages/message', collection: @chatroom.messages
+    - else
+      #messages.panel-body.hidden
+  = render partial: 'messages/message_form', locals: { message: @message, chatroom: @chatroom }
