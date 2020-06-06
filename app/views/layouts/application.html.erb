@@ -11,21 +11,24 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if current_user %>
-      <%= link_to t('pages.index.sign_out'), destroy_user_session_path, method: :delete %>
-    <% else %>
-      <div>
-        <%= link_to t('pages.index.sign_up'), new_user_registration_path %>
-      </div>
-      <div>
-        <%= link_to t('pages.index.sign_in'), new_user_session_path %>
-      </div>
-    <% end %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <% if current_user %>
+        <%= link_to t('pages.index.sign_out'), destroy_user_session_path, method: :delete %>
+      <% else %>
+        <div>
+          <%= link_to t('pages.index.sign_up'), new_user_registration_path %>
+        </div>
+        <div>
+          <%= link_to t('pages.index.sign_in'), new_user_session_path %>
+        </div>
+      <% end %>
+    </nav>
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
+    <div id="notifications"></div>
     <%= yield %>
   </body>
 </html>
