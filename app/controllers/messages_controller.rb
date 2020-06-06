@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
         user: message.user.email
       head :ok
     else 
+      flash[:error] = message.errors.full_messages
       redirect_to chatrooms_path
     end
   end

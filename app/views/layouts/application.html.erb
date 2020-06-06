@@ -23,6 +23,9 @@
         <%= link_to t('pages.index.sign_in'), new_user_session_path %>
       </div>
     <% end %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
