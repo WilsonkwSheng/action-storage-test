@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
@@ -6,4 +8,6 @@ Rails.application.routes.draw do
   resources :messages
   resources :users
   root 'chatrooms#index'
+
+  mount Sidekiq::Web => '/sidekiq'
 end

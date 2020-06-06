@@ -4,14 +4,10 @@ class MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     message.user = current_user
-    if message.save
-      ActionCable.server.broadcast 'messages',
-        message: message.content,
-        user: message.user.email
-      head :ok
-    else 
+    message.save
+    if message.errors.present?
       flash[:error] = message.errors.full_messages
-      redirect_to chatrooms_path
+      redirect_to chatroom_path(message.chatroom_id)
     end
   end
 
