@@ -1,5 +1,9 @@
-%h1 Chatrooms Page
-= link_to 'Create Chatroom', new_chatroom_path
-%div
+.container-fluid
+  %h1 Chatrooms Page
+  = link_to 'Create Chatroom', new_chatroom_path
+
+.mb-4
+
+.container-fluid
   - @chatrooms.each do |chatroom|
-    = link_to "Chatroom: #{chatroom.topic}", chatroom_path(chatroom)
+    %li= link_to "Chatroom: #{chatroom.topic}", chatroom_path(chatroom)

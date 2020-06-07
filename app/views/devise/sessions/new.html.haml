@@ -1,0 +1,12 @@
+.container
+  %h2 Hello Sign In To Continue :)
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field
+      = f.label :email
+      %br/
+      = f.email_field :email, autofocus: true, placeholder: 'Email', class: 'form-control w-300 my-3'
+    .field
+      = f.label :password
+      %br/
+      = f.password_field :password, autocomplete: 'off', placeholder: 'Password', class: 'form-control w-300 my-3'
+    = f.submit 'Sign in', class: 'btn btn-primary w-300 my-3'
