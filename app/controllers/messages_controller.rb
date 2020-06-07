@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     message.user = current_user
     message.save
     if message.errors.present?
-      flash[:error] = message.errors.full_messages
+      flash[:error] = message.errors.full_messages.join(', ')
       redirect_to chatroom_path(message.chatroom_id)
     end
   end

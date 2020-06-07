@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title ActionCableTest
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = action_cable_meta_tag
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      - if current_user
+        .mr-3
+          = link_to 'Home', root_path
+        .mr-3
+          = link_to t('pages.index.sign_out'), destroy_user_session_path, method: :delete
+      - else
+        .mr-3
+          = link_to t('pages.index.sign_up'), new_user_registration_path
+        .mr-3
+          = link_to t('pages.index.sign_in'), new_user_session_path
+    - flash.each do |key, value|
+      %div{:class => "alert alert-#{key}"}= value
+    #notifications
+    = yield
